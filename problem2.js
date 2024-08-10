@@ -1,4 +1,8 @@
 function checkName(str) {
+    // Validation
+    if(typeof(str) !== "string") {
+        return "Invalid"
+    }
   const goodName = ["a", "y", "i", "e", "o", "u", "w"];
 
   str = str.trim();
@@ -13,4 +17,4 @@ function checkName(str) {
   return "Bad Name";
 }
 
-console.log(checkName("salmW"));
+console.log(checkName("Salman"));

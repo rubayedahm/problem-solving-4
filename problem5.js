@@ -1,19 +1,27 @@
-function monthlySavings(arr, livingCost) {
-  const sahedsIncome = 5000;
-  const tax = 20;
-
-  for (cost of arr) {
-    let taxMoney = 0;
-    let storeTaxMoney = 0;
-
-    if (cost >= 3000) {
-      taxMoney = cost / tax;
-      storeTaxMoney += taxMoney
-    }
-    console.log(storeTaxMoney)
+function monthlySavings(payments, livingCost) {
+  if (!Array.isArray(payments) || typeof livingCost !== "number") {
+    return "invalid input";
   }
+
+  let totalIncome = payments.reduce(function(total, payment){
+    if(payment >= 3000) {
+      return total + payment * 0.8;
+      
+    }
+    else {
+      return total + payment
+    }
+  }, 0);
+
+  let savings = totalIncome - livingCost;
+
+  if (savings >= 0) {
+    return savings;
+} else {
+    return "earn more";
 }
 
-const arr = [2000, 3000, 5000, 500];
-const livingCost = 200;
-console.log(monthlySavings(arr, livingCost));
+
+}
+
+console.log(monthlySavings([ 900 , 2700 , 3400] , 10000));
